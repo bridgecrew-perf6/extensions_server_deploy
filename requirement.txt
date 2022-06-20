@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+bcrypt
+flask-jwt-extended
+flask-login
+obfuscate
