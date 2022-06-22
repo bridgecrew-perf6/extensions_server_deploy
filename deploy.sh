@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rsync -av --exclude=extensions_server.db --exclude=venv --exclude=dist --exclude=__pycache__ --exclude=.*  ./* ../extensions_server_deploy/
+rsync -av --exclude=extensions_server.db --exclude=venv --exclude=__pycache__ --exclude=.*  ./* ../extensions_server_deploy/
 pyarmor obfuscate server.py
 cp -r ./dist/* ../extensions_server_deploy
 cd ../extensions_server_deploy
