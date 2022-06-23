@@ -24,6 +24,7 @@ jwt = JWTManager(app)
 
 PATH_TO_HOST_ALLOW = os.environ.get("PATH_TO_HOST_ALLOW", 'hosts.allow')
 PATH_TO_HOSTS = os.environ.get("PATH_TO_HOSTS", 'hosts')
+PATH_TO_NAS_FOLDER = os.environ.get("PATH_TO_NAS_FOLDER", '/nas')
 
 app.secret_key = os.urandom(12)
 login = LoginManager(app)
@@ -113,6 +114,15 @@ def registry_hosts():
     # Append new lines at the end
     newClientLine = "{} {}.aivis.tech".format(IP, camID)
     append_new_line(PATH_TO_HOSTS, newClientLine)
+
+    # Set folder /nas accessible all
+    cmd1 = "sudo chown -R nobody:nogroup {}".format(PATH_TO_NAS_FOLDER)
+    cmd2 = "sudo chmod -R 777 {}".format(PATH_TO_NAS_FOLDER)
+    print(cmd1)
+    print(cmd2)
+    subprocess.run(cmd1.split(' '))
+    subprocess.run(cmd2.split(' '))
+
     return jsonify({"msg": "success"}), 200
 
 

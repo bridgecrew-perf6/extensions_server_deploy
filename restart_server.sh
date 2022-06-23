@@ -4,5 +4,5 @@ kill -15 $(pgrep -f "server.py")
 kill -15 $(pgrep -f "discovery.py")
 export PATH_TO_HOSTS=/etc/hosts
 export PORT=8443
-python3.8 discovery.py 2>&1 &
-python3.8 server.py
+/root/venv/bin/python3.8 discovery.py 2>&1 &
+/root/venv/bin/python3.8 server.py
