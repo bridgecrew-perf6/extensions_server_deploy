@@ -1,3 +1,4 @@
+#!/bin/bash
 # This script use when run outside docker
 cd /root/extensions_server_deploy
 kill -15 $(pgrep -f "server.py")
